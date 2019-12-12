@@ -17,9 +17,11 @@ connection.once('open', () => console.log('Connected to MongoDB server'));
 const urlsRouter = require('./routes/urls');
 const usersRouter = require('./routes/users');
 const shortUrlsRouter = require('./routes/shortUrls');
+const drawRouter = require('./routes/drawSim');
 
 app.use('/urls', urlsRouter);
 app.use('/users', usersRouter);
+app.use('/drawSim', drawRouter);
 app.use('/', shortUrlsRouter);
 
 app.listen(port, () => {
