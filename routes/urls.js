@@ -30,7 +30,7 @@ router.route('/new').post((req, res) => {
 
     console.log('Modified base URl: ' + baseUrl);
 
-    const newUrl = new Url({baseUrl: req.body.baseUrl, shortenedCode: newCode, createdBy: req.body.username});
+    const newUrl = new Url({baseUrl: baseUrl, shortenedCode: newCode, createdBy: req.body.username});
     newUrl.save()
         .then(() => {
             console.log('New url added to db');
@@ -48,7 +48,7 @@ router.route('/all/:username').get((req, res) => {
 
     Url.find({createdBy: reqUsername}, (err, foundUrls) => {
         if(!err) {
-            console.log(foundUrls);
+            //console.log(foundUrls);
             res.json(foundUrls);
         } else
             console.log(err);
